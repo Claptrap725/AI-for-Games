@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 677, y: 342}
+  m_MaxSize: {x: 12002, y: 8042}
   vertical: 0
-  controlID: 98
+  controlID: 14
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,10 +137,10 @@ MonoBehaviour:
     y: 0
     width: 1531
     height: 947
-  m_MinSize: {x: 402, y: 492}
-  m_MaxSize: {x: 10001, y: 14042}
+  m_MinSize: {x: 402, y: 342}
+  m_MaxSize: {x: 8002, y: 8042}
   vertical: 1
-  controlID: 103
+  controlID: 15
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 104
+  controlID: 16
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -239,14 +239,14 @@ MonoBehaviour:
     y: 671
     width: 1531
     height: 276
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 16}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,8 +266,8 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_SerializedViewsNames: []
   m_SerializedViewsValues: []
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 0
+  m_ShowGizmos: 1
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 1208, y: 629}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_RenderIMGUI: 1
   m_MaximizeOnPlay: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 0
+  m_Gizmos: 1
   m_Stats: 0
   m_SelectedSizes: 0000000000000000000000000e000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
@@ -390,24 +390,24 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f8f3ffff
-      m_LastClickedID: -3080
-      m_ExpandedIDs: f8f3ffff68f9ffff84f9ffff46fbffff
+      scrollPos: {x: 0, y: 912}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 6830ffff46fbffff62340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: NPC2
+        m_OriginalName: NPC2
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 13410
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -453,9 +453,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.4529473, y: 1.134937, z: 0.35101604}
+    m_Target: {x: -1.2281091, y: 4.558319, z: 21.441788}
     speed: 2
-    m_Value: {x: 1.4529473, y: 1.134937, z: 0.35101604}
+    m_Value: {x: -1.2281091, y: 4.558319, z: 21.441788}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -501,13 +501,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.2640377, y: -0.026908584, z: 0.00736799, w: -0.9641179}
+    m_Target: {x: -0.1753948, y: -0.7725307, z: 0.24177076, w: -0.56040186}
     speed: 2
-    m_Value: {x: -0.2640354, y: -0.02690835, z: 0.0073679257, w: -0.9641095}
+    m_Value: {x: -0.17575108, y: -0.7716621, z: 0.2414989, w: -0.5615403}
   m_Size:
-    m_Target: 50.730034
+    m_Target: 61.40783
     speed: 2
-    m_Value: 50.730034
+    m_Value: 58.763474
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -607,10 +607,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 5}
-    m_SelectedIDs: ce340000
-    m_LastClickedID: 13518
-    m_ExpandedIDs: 00000000a6340000ac34000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: f2340000
+    m_LastClickedID: 13554
+    m_ExpandedIDs: 00000000ca34000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -638,7 +638,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a6340000
+    m_ExpandedIDs: 00000000ca340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -663,8 +663,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: a0a2ffff
+    m_LastClickedInstanceID: -23904
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300002234000000000000
     m_RenameOverlay:
@@ -682,7 +682,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -716,9 +716,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 748
-    width: 1531
-    height: 253
+    y: 744
+    width: 1530
+    height: 255
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &18
 MonoBehaviour:
@@ -757,4 +757,4 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 100
+  m_LastVerticalScrollValue: 0
