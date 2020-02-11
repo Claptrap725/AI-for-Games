@@ -24,12 +24,14 @@ public class Agent : MonoBehaviour
                 force += (transform.position - walls[i].transform.position).normalized * 2;
         }
 
+
+
         rb.velocity += force;
         float speed = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
-        if (speed > maxSpeed)
-        {
+        //if (speed > maxSpeed)
+        //{
             rb.velocity = rb.velocity.normalized * maxSpeed;
-        }
+        //}
         heading = rb.velocity.normalized;
         force = Vector3.zero;
     }
