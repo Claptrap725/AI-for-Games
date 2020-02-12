@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Agent.cs" />
     <Compile Include="Assets\Scripts\Boid.cs" />
     <Compile Include="Assets\Scripts\BoidTrigger.cs" />
+    <Compile Include="Assets\Scripts\NavMeshAgentController.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Reference Include="Unity.Timeline.Editor">
