@@ -32,7 +32,7 @@ public class Node : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         for (int i = 0; i < neighbors.Count; i++)

@@ -17,11 +17,15 @@ public class Agent : MonoBehaviour
 
     void Update()
     {
-        Collider[] walls = Physics.OverlapSphere(heading.normalized + transform.position, 1);
+        Collider[] walls = Physics.OverlapSphere(heading.normalized * 0.4f + transform.position + Vector3.up * 0.2f, 0.8f);
         for (int i = 0; i < walls.Length; i++)
         {
-            if (walls[i].tag == "Wall" && transform.position.y < walls[i].transform.position.y)
-                force += (transform.position - walls[i].transform.position).normalized * 2;
+            if (walls[i].tag == "Wall")
+            {
+                Vector3 newForce = (transform.position - walls[i].transform.position).normalized * 3;
+                newForce.y = 0;
+                force += newForce;
+            }
         }
 
 
@@ -50,6 +54,6 @@ public class Agent : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(heading.normalized + transform.position, 1);
+        Gizmos.DrawWireSphere(heading.normalized * 0.4f + transform.position + Vector3.up * 0.2f, 0.8f);
     }
 }
