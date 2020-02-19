@@ -20,7 +20,7 @@ public class Agent : MonoBehaviour
         Collider[] walls = Physics.OverlapSphere(heading.normalized + transform.position, 1);
         for (int i = 0; i < walls.Length; i++)
         {
-            if (walls[i].tag == "Wall")
+            if (walls[i].tag == "Wall" && transform.position.y < walls[i].transform.position.y)
                 force += (transform.position - walls[i].transform.position).normalized * 2;
         }
 
@@ -28,10 +28,16 @@ public class Agent : MonoBehaviour
 
         rb.velocity += force;
         float speed = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
-        //if (speed > maxSpeed)
-        //{
+        if (speed > maxSpeed && force != Vector3.zero)
+        {
             rb.velocity = rb.velocity.normalized * maxSpeed;
-        //}
+        }
+        else
+        {
+            float y = rb.velocity.y;
+            rb.velocity = rb.velocity * 0.9f;
+            rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
+        }
         heading = rb.velocity.normalized;
         force = Vector3.zero;
     }
