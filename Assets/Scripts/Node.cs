@@ -29,6 +29,7 @@ public class Node : MonoBehaviour
                 neighbors[i].difficulty = 1;
 
             neighbors[i].cost = Vector3.Distance(transform.position, neighbors[i].node.transform.position) * neighbors[i].difficulty;
+           // neighbors[i].cost = 1;
         }
     }
 

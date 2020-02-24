@@ -42,7 +42,7 @@ public class AStar : MonoBehaviour
         for (;;)
         {
             loops++;
-            if (loops > 20000)
+            if (loops > 10000)
             {
                 Debug.Log("Faild to find Path!!");
                 return new Path(path);
@@ -65,15 +65,19 @@ public class AStar : MonoBehaviour
             {
                 if (!closedList.Contains(current.neighbors[i].node))
                 {
-                    openList.Add(current.neighbors[i].node);
-                    current.neighbors[i].node.gScore = current.gScore + current.neighbors[i].cost;
-                    current.neighbors[i].node.hScore = Vector3.Distance(current.neighbors[i].node.transform.position, targetNode.transform.position);
-                    current.neighbors[i].node.previous = current;
+                    if (!openList.Contains(current.neighbors[i].node))
+                    {
+                        openList.Add(current.neighbors[i].node);
+                        current.neighbors[i].node.gScore = current.gScore + current.neighbors[i].cost;
+                        current.neighbors[i].node.hScore = Vector3.Distance(current.neighbors[i].node.transform.position, targetNode.transform.position);
+                        current.neighbors[i].node.previous = current;
+                    }
                 }
-                else if (current.neighbors[i].node.fScore > current.neighbors[i].node.hScore + current.gScore + current.neighbors[i].cost)//compare fScores
+                else if (current.neighbors[i].node.fScore > (current.neighbors[i].node.hScore + current.gScore + current.neighbors[i].cost))//compare fScores
                 {
                     closedList.Remove(current.neighbors[i].node);
-                    openList.Add(current.neighbors[i].node);
+                    if (!openList.Contains(current.neighbors[i].node))
+                        openList.Add(current.neighbors[i].node);
                     current.neighbors[i].node.gScore = current.gScore + current.neighbors[i].cost;
                     current.neighbors[i].node.hScore = Vector3.Distance(current.neighbors[i].node.transform.position, current.transform.position);
                     current.neighbors[i].node.previous = current;
@@ -87,6 +91,7 @@ public class AStar : MonoBehaviour
             path.Add(current);
             current = current.previous;
         }
+        Debug.Log("Path found in " + loops + " loops!");
 
         path.Reverse();
         return new Path(path);
