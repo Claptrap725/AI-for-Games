@@ -51,7 +51,7 @@ public class Agent : MonoBehaviour
         force += _force;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(heading.normalized * 0.4f + transform.position + Vector3.up * 0.2f, 0.8f);

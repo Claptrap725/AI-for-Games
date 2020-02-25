@@ -13,7 +13,21 @@ public class AStar : MonoBehaviour
 
     List<Node> openList = new List<Node>();
     List<Node> closedList = new List<Node>();
-    
+
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 1000))
+            {
+                NPC.NewPath(GetPath(NPC.transform.position, hit.point));
+            }
+        }
+    }
+
     public void NodeClicked(Node caller)
     {
         targetNode = caller;
@@ -27,6 +41,27 @@ public class AStar : MonoBehaviour
             }
         }
         NPC.NewPath(GetPath());
+    }
+
+    public Path GetPath(Vector3 startPos, Vector3 endPos)
+    {
+        for (int i = 0; i < allNodes.Count; i++)
+        {
+            allNodes[i].gScore = 0;
+            allNodes[i].hScore = 0;
+            if (startNode == null || Vector3.Distance(startNode.transform.position, startPos) > Vector3.Distance(allNodes[i].transform.position, startPos))
+            {
+                startNode = allNodes[i];
+            }
+            if (targetNode == null || Vector3.Distance(targetNode.transform.position, endPos) > Vector3.Distance(allNodes[i].transform.position, endPos))
+            {
+                targetNode = allNodes[i];
+            }
+        }
+
+        Path path = GetPath();
+        path.points.Add(endPos);
+        return path;
     }
 
     public Path GetPath()

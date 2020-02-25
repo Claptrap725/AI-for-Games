@@ -74,6 +74,8 @@ public class NodeConnectorTool : Editor
     {
         nodeA.neighbors.Add(new Neighbor(nodeB));
         nodeB.neighbors.Add(new Neighbor(nodeA));
+        EditorUtility.SetDirty(nodeA);
+        EditorUtility.SetDirty(nodeB);
         nodeA.OnValidate();
         nodeB.OnValidate();
     }
