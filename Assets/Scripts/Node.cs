@@ -19,9 +19,16 @@ public class Node : MonoBehaviour
     private void Start()
     {
         AStar.allNodes.Add(this);
+        for (int i = 0; i < neighbors.Count; i++)
+        {
+            if (neighbors[i].difficulty == 0)
+                neighbors[i].difficulty = 1;
+
+            neighbors[i].cost = Vector3.Distance(transform.position, neighbors[i].node.transform.position) * neighbors[i].difficulty;
+        }
     }
 
-    private void OnValidate()
+    public void OnValidate()
     {
         for (int i = 0; i < neighbors.Count; i++)
         {
@@ -29,7 +36,6 @@ public class Node : MonoBehaviour
                 neighbors[i].difficulty = 1;
 
             neighbors[i].cost = Vector3.Distance(transform.position, neighbors[i].node.transform.position) * neighbors[i].difficulty;
-           // neighbors[i].cost = 1;
         }
     }
 

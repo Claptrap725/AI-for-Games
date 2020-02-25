@@ -42,7 +42,7 @@ public class AStar : MonoBehaviour
         for (;;)
         {
             loops++;
-            if (loops > 10000)
+            if (loops > 1000)
             {
                 Debug.Log("Faild to find Path!!");
                 return new Path(path);
@@ -91,7 +91,7 @@ public class AStar : MonoBehaviour
             path.Add(current);
             current = current.previous;
         }
-        Debug.Log("Path found in " + loops + " loops!");
+        //Debug.Log("Path found in " + loops + " loops!");
 
         path.Reverse();
         return new Path(path);
