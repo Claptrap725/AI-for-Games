@@ -7,6 +7,7 @@ public class AStar : MonoBehaviour
 {
     public PathFollower NPC;
     public static List<Node> allNodes = new List<Node>();
+    public static AStar instance;
 
     Node targetNode;
     Node startNode;
@@ -14,6 +15,10 @@ public class AStar : MonoBehaviour
     List<Node> openList = new List<Node>();
     List<Node> closedList = new List<Node>();
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {

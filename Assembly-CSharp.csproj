@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\AISteering.cs" />
     <Compile Include="Assets\Scripts\AStar.cs" />
     <Compile Include="Assets\Scripts\Agent.cs" />
+    <Compile Include="Assets\Scripts\BianaryDecision.cs" />
     <Compile Include="Assets\Scripts\Boid.cs" />
     <Compile Include="Assets\Scripts\BoidTrigger.cs" />
     <Compile Include="Assets\Scripts\DebugNodeScore.cs" />
@@ -73,13 +74,12 @@
     <Compile Include="Assets\Scripts\PathFollower.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\Steve.cs" />
+    <Compile Include="Assets\Scripts\Swordsman.cs" />
     <Compile Include="Assets\Terrain\Water.cs" />
-    <None Include="Assets\Baker House\Readme.txt" />
+    <None Include="Assets\Art\Baker House\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/s199058/Desktop/AI for Games/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>C:/Users/s199058/Desktop/AI for Games/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/s199058/Desktop/AI for Games/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -113,9 +113,6 @@
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>C:/Users/s199058/Desktop/AI for Games/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/s199058/Desktop/AI for Games/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>C:/Users/s199058/Desktop/AI for Games/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>

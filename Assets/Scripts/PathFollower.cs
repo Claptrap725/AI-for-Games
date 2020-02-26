@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
+    public float speed;
+    public bool pathFinished { get { return pathIterator >= path.points.Count; } set { if (value) pathIterator = path.points.Count; } }
     Agent agent;
-    Path path;
-    int pathIterator;
+    Path path = new Path();
+    int pathIterator = 0;
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class PathFollower : MonoBehaviour
         {
             Vector3 vToTarget = path.points[pathIterator] - transform.position;
             vToTarget.y = 0;
-            agent.ApplyForce(vToTarget.normalized);
+            agent.ApplyForce(vToTarget.normalized * speed);
 
             float distanceToTarget = Mathf.Sqrt(vToTarget.x * vToTarget.x + vToTarget.z * vToTarget.z);
             if (distanceToTarget < 0.3f)
@@ -39,6 +41,11 @@ public class PathFollower : MonoBehaviour
 public class Path
 {
     public List<Vector3> points;
+
+    public Path()
+    {
+        points = new List<Vector3>();
+    }
 
     public Path(List<GameObject> gameObjects)
     {

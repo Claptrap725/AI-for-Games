@@ -31,16 +31,24 @@ public class Agent : MonoBehaviour
 
 
         rb.velocity += force;
+        if (rb.velocity.y < -2f)
+        {
+            Vector3 newSpeed = rb.velocity * 0.8f;
+            newSpeed.y = rb.velocity.y;
+            rb.velocity = newSpeed;
+        }
         float speed = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
         if (speed > maxSpeed && force != Vector3.zero)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            Vector3 newSpeed = rb.velocity.normalized * maxSpeed;
+            newSpeed.y = rb.velocity.y;
+            rb.velocity = newSpeed;
         }
         else
         {
-            float y = rb.velocity.y;
-            rb.velocity = rb.velocity * 0.9f;
-            rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
+            //float y = rb.velocity.y;
+            rb.velocity = new Vector3(rb.velocity.x * 0.9f, rb.velocity.y, rb.velocity.z * 0.9f); 
+            //rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
         }
         heading = rb.velocity.normalized;
         force = Vector3.zero;
