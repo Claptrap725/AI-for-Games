@@ -6,43 +6,49 @@ public class Swordsman : MonoBehaviour
 {
     [HideInInspector]
     public AISteering aISteering;
+    [HideInInspector]
+    public PathFollower pathFollower;
+
 
     public bool attackReady { get { return attackTimer <= 0; } set { if (value) attackTimer = 0; else attackTimer = attackCoolDown; } }
     float attackTimer = 0;
     readonly float attackCoolDown = 0.5f;
 
-    public bool pathfindReady { get { return pathfindTimer <= 0; } set { if (value) pathfindTimer = 0; else pathfindTimer = pathfindCoolDown; } }
-    float pathfindTimer = 0;
-    readonly float pathfindCoolDown = 0.5f;
-
-    public Path path = new Path();
-    int pathIterator = 0;
+    [HideInInspector]
+    public bool pathfindReady = true;
 
     private void Awake()
     {
         aISteering = GetComponent<AISteering>();
+        pathFollower = GetComponent<PathFollower>();
     }
 
     void Update()
     {
         attackTimer -= Time.deltaTime;
+        if (pathFollower.pathFinished) pathfindReady = true;
+        Decide();
     }
 
     public void NewPath(Path newPath)
     {
-        pathIterator = 0;
-        path = newPath;
+        pathFollower.NewPath(newPath);
     }
 
     void Decide()
     {
-        new SteveInMazeDecision(
-            new SteveCloseDecision(gameObject,
-                new AttackAnswer(this),
-                new PathfindAnswer(this)),
-            new SteveCloseDecision(gameObject,
-                new AttackAnswer(this),
-                new PursueAnswer(this)));
+        IDecision decision = new SteveInMazeDecision(
+                                new SteveCloseDecision(gameObject,
+                                    new AttackAnswer(this),
+                                    new PathfindAnswer(this)),
+                                new SteveCloseDecision(gameObject,
+                                    new AttackAnswer(this),
+                                    new PursueAnswer(this)));
+
+        while (decision != null)
+        {
+            decision = decision.MakeDecision();
+        }
     }
 }
 
@@ -79,6 +85,7 @@ public class PursueAnswer : BianaryAnswer, IDecision
 
     public override void Do()
     {
+        swordsman.pathfindReady = true;
         if (!swordsman.aISteering.seekTargets.Contains(Steve.instance.gameObject))
             swordsman.aISteering.seekTargets.Add(Steve.instance.gameObject);
     }
@@ -94,6 +101,7 @@ public class PathfindAnswer : BianaryAnswer, IDecision
 
     public override void Do()
     {
+        swordsman.aISteering.seekTargets.Clear();
         if (swordsman.pathfindReady)
         {
             swordsman.pathfindReady = false;

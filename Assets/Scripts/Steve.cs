@@ -15,21 +15,21 @@ public class Steve : MonoBehaviour
 
     public static Steve instance;
 
-    public bool seeEnemy { get; private set; }
+    public bool seeEnemy;
     public bool enemyClose { get { return swordsmen.Count > 0; } }
-    public bool inMaze { get; private set; }
+    public bool inMaze;
     public bool basketFull { get { return berries == maxBerries; } }
     private int maxBerries = 10;
     public int health = 10;
     public List<Swordsman> swordsmen = new List<Swordsman>();
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool pathfindReady = true;
-    //[HideInInspector]
+    [HideInInspector]
     public bool collectingBerries = false;
     [HideInInspector]
     public float berryTimer = 0.5f;
-    //[HideInInspector]
+    [HideInInspector]
     public int berries = 0;
 
     private void Awake()
@@ -47,8 +47,33 @@ public class Steve : MonoBehaviour
 
     private void Update()
     {
-        if (pathFollower.pathFinished) pathfindReady = true;
+        if (!pathfindReady && pathFollower.pathFinished) pathfindReady = true;
+        if (!inMaze && transform.position.x < -200) inMaze = true;
+
+        aISteering.fleeTargets.Clear();
+        swordsmen.Clear();
+        Collider[] colls = Physics.OverlapSphere(transform.position, 20);
+        for (int i = 0; i < colls.Length; i++)
+        {
+            Swordsman man = colls[i].GetComponent<Swordsman>();
+            if (man != null)
+            {
+                if (!seeEnemy)
+                {
+                    seeEnemy = true;
+                    pathfindReady = true;
+                }
+                swordsmen.Add(man);
+            }
+        }
+
         Decide();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, 20);
     }
 
     void Decide()
@@ -177,12 +202,14 @@ public class FleeAnswer : BianaryAnswer, IDecision
 {
     public override void Do()
     {
-        Steve.instance.collectingBerries = false;
         Steve.instance.pathfindReady = true;
+        if (Steve.instance.collectingBerries)
+            new RunHomeAnswer();
+        Steve.instance.collectingBerries = false;
         for (int i = 0; i < Steve.instance.swordsmen.Count; i++)
         {
-            if (!Steve.instance.aISteering.seekTargets.Contains(Steve.instance.swordsmen[i].gameObject))
-                Steve.instance.aISteering.seekTargets.Add(Steve.instance.swordsmen[i].gameObject);
+            if (!Steve.instance.aISteering.fleeTargets.Contains(Steve.instance.swordsmen[i].gameObject))
+                Steve.instance.aISteering.fleeTargets.Add(Steve.instance.swordsmen[i].gameObject);
         }
     }
 }

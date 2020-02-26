@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Ground
   - AStarNode
+  - Swordsman
   layers:
   - Default
   - TransparentFX

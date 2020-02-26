@@ -31,8 +31,9 @@ public class Agent : MonoBehaviour
 
 
         rb.velocity += force;
-        if (rb.velocity.y < -2f)
+        if (rb.velocity.y < -8f)
         {
+            Debug.Log(name + "is falling!");
             Vector3 newSpeed = rb.velocity * 0.8f;
             newSpeed.y = rb.velocity.y;
             rb.velocity = newSpeed;

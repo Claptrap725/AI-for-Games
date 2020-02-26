@@ -15,6 +15,7 @@ public class AISteering : MonoBehaviour
     public float wanderTolerance = 0.2f;
     public float wanderDistance = 1;
     float wanderTimer = 0;
+    public float forceStrength = 1;
 
     Rigidbody rb;
 
@@ -74,8 +75,8 @@ public class AISteering : MonoBehaviour
         {
             newForce += (transform.position - evadeTargets[i].transform.position + evadeTargets[i].GetComponent<Rigidbody>().velocity).normalized;
         }
-
-        agent.ApplyForce(newForce);
+        newForce.y = 0;
+        agent.ApplyForce(newForce * forceStrength);
     }
 
     
