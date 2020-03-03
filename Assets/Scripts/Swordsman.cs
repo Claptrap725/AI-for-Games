@@ -60,7 +60,7 @@ public class SteveCloseDecision : BianaryDecision, IDecision
     {
         trueBrach = _trueBranch;
         falseBrach = _falseBranch;
-        result = Vector3.Distance(other.transform.position, Steve.instance.transform.position) < 1;
+        result = Vector3.Distance(other.transform.position, Steve.instance.transform.position) < 3;
     }
 }
 

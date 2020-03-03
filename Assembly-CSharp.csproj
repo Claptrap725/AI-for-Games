@@ -89,7 +89,6 @@
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\Steve.cs" />
     <Compile Include="Assets\Scripts\Swordsman.cs" />
-    <Compile Include="Assets\Scripts\SwordsmenSpawner.cs" />
     <Compile Include="Assets\Terrain\Water.cs" />
     <None Include="Assets\Art\Baker House\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">

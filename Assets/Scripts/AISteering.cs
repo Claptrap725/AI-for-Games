@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class AISteering : MonoBehaviour
 {
-    Agent agent;
+    [HideInInspector]
+    public Agent agent;
+    [HideInInspector]
+    public Rigidbody rb;
     public List<GameObject> seekTargets;
     public List<GameObject> fleeTargets;
     public List<GameObject> pursueTargets;
@@ -17,7 +20,6 @@ public class AISteering : MonoBehaviour
     float wanderTimer = 0;
     public float forceStrength = 1;
 
-    Rigidbody rb;
 
     private void Awake()
     {
