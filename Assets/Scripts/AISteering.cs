@@ -8,10 +8,25 @@ public class AISteering : MonoBehaviour
     public Agent agent;
     [HideInInspector]
     public Rigidbody rb;
+
+    /// <summary>
+    /// Agent will move towards all objects in seekTargets
+    /// </summary>
     public List<GameObject> seekTargets;
+    /// <summary>
+    /// Agent will away towards all objects in fleeTargets
+    /// </summary>
     public List<GameObject> fleeTargets;
+    /// <summary>
+    /// Agent will chase all objects in pursueTargets, taking into account the direction they are moving
+    /// </summary>
     public List<GameObject> pursueTargets;
+    /// <summary>
+    /// Agent will try to escape all objects in evadeTargets, taking into account the direction they are moving
+    /// </summary>
     public List<GameObject> evadeTargets;
+
+
     Vector3 tempSeekTarget = Vector3.zero;
     public bool wander;
     public float headingDistance;
