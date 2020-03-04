@@ -22,7 +22,6 @@ public class Steve : MonoBehaviour
     public bool basketFull { get { return berries == maxBerries; } }
     private int maxBerries = 10;
     public int health = 10;
-    bool atHome = false;
     public List<Swordsman> swordsmen = new List<Swordsman>();
     public List<GameObject> spawnWhenAtHome = new List<GameObject>();
 
@@ -30,6 +29,8 @@ public class Steve : MonoBehaviour
     public bool pathfindReady = true;
     [HideInInspector]
     public bool collectingBerries = false;
+    [HideInInspector]
+    public bool atHome = false;
     [HideInInspector]
     public float berryTimer = 0.5f;
     [HideInInspector]

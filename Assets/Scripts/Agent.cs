@@ -6,6 +6,7 @@ public class Agent : MonoBehaviour
 {
     Vector3 force = Vector3.zero;
     Rigidbody rb;
+    Steve steve;
 
     [HideInInspector]
     public Vector3 heading = new Vector3();
@@ -15,6 +16,7 @@ public class Agent : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        steve = GetComponent<Steve>();
     }
 
     void Update()
@@ -24,14 +26,17 @@ public class Agent : MonoBehaviour
             transform.LookAt(heading + transform.position);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
-            Collider[] walls = Physics.OverlapSphere(heading.normalized * 0.4f + transform.position + Vector3.up * 0.2f, 1.8f);
-            for (int i = 0; i < walls.Length; i++)
+            if (steve == null || !steve.collectingBerries)
             {
-                if (walls[i].tag == "Wall")
+                Collider[] walls = Physics.OverlapSphere(heading.normalized * 0.4f + transform.position + Vector3.up * 0.2f, 1.8f);
+                for (int i = 0; i < walls.Length; i++)
                 {
-                    Vector3 newForce = (transform.position - walls[i].transform.position).normalized * 10;
-                    newForce.y = 0;
-                    force += newForce;
+                    if (walls[i].tag == "Wall" || (walls[i].tag == "Swordman" && Steve.instance.health > 0))
+                    {
+                        Vector3 newForce = (transform.position - walls[i].transform.position).normalized * 10;
+                        newForce.y = 0;
+                        force += newForce;
+                    }
                 }
             }
 

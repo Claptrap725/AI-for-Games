@@ -8,7 +8,7 @@ public class PathFollower : MonoBehaviour
     public Path path;
     public bool pathFinished { get { return pathIterator >= path.points.Count; } set { if (value) pathIterator = path.points.Count; } }
     Agent agent;
-    int pathIterator = 0;
+    public int pathIterator = 0;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class PathFollower : MonoBehaviour
             
 
             float distanceToTarget = Mathf.Sqrt(vToTarget.x * vToTarget.x + vToTarget.z * vToTarget.z);
-            if (distanceToTarget < 1f)
+            if (distanceToTarget < 2f)
             {
                 pathIterator++;
             }

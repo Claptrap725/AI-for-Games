@@ -9,6 +9,7 @@ public class CameraTargetSelector : MonoBehaviour
     CinemachineVirtualCamera cinemachine;
     CinemachineOrbitalTransposer transposer;
     public Vector3 followOffsetTargetPos;
+    bool setMazeHeight = false;
 
     private void Awake()
     {
@@ -28,9 +29,19 @@ public class CameraTargetSelector : MonoBehaviour
             cinemachine.LookAt = cameraTarget.transform;
         }
 
-        if (Steve.instance.inMaze)
+        if (Input.GetKey(KeyCode.W))
         {
-            followOffsetTargetPos = new Vector3(0, 300, -20);
+            followOffsetTargetPos -= followOffsetTargetPos.normalized;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            followOffsetTargetPos += followOffsetTargetPos.normalized;
+        }
+
+        if (Steve.instance.inMaze && !setMazeHeight)
+        {
+            followOffsetTargetPos = new Vector3(0, 140, -50);
+            setMazeHeight = true;
         }
 
         transposer.m_FollowOffset += (followOffsetTargetPos - transposer.m_FollowOffset) * 0.01f;

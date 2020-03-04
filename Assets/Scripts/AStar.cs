@@ -48,6 +48,34 @@ public class AStar : MonoBehaviour
         NPC.NewPath(GetPath());
     }
 
+    public Path GetPath(Vector3 startPos, Vector3 endPos, Ray ray)
+    {
+        for (int i = 0; i < allNodes.Count; i++)
+        {
+            allNodes[i].gScore = 0;
+            allNodes[i].hScore = 0;
+            if (startNode == null || Vector3.Distance(startNode.transform.position, startPos) > Vector3.Distance(allNodes[i].transform.position, startPos))
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, allNodes[i].transform.position - transform.position, out hit))
+                {
+                    if (hit.collider.GetComponent<Node>() != null)
+                    {
+                        startNode = allNodes[i];
+                    }
+                }
+            }
+            if (targetNode == null || Vector3.Distance(targetNode.transform.position, endPos) > Vector3.Distance(allNodes[i].transform.position, endPos))
+            {
+                targetNode = allNodes[i];
+            }
+        }
+
+        Path path = GetPath();
+        path.points.Add(endPos);
+        return path;
+    }
+
     public Path GetPath(Vector3 startPos, Vector3 endPos)
     {
         for (int i = 0; i < allNodes.Count; i++)
@@ -87,6 +115,7 @@ public class AStar : MonoBehaviour
                 Debug.Log("Faild to find Path!!");
                 return new Path(path);
             }
+
             current = openList[0];
             for (int i = 0; i < openList.Count; i++)
             {
