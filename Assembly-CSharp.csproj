@@ -82,10 +82,12 @@
     <Compile Include="Assets\Scripts\BoidTrigger.cs" />
     <Compile Include="Assets\Scripts\CameraTargetSelector.cs" />
     <Compile Include="Assets\Scripts\DebugNodeScore.cs" />
+    <Compile Include="Assets\Scripts\FollowScript.cs" />
     <Compile Include="Assets\Scripts\NavMeshAgentController.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\PathFollower.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\ReloadLevel.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\Steve.cs" />
     <Compile Include="Assets\Scripts\Swordsman.cs" />

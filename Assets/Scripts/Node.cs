@@ -18,7 +18,7 @@ public class Node : MonoBehaviour
 
     private void Start()
     {
-        AStar.allNodes.Add(this);
+        AStar.instance.AddNodeToList(this);
         for (int i = 0; i < neighbors.Count; i++)
         {
             if (neighbors[i].difficulty == 0)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class AStar : MonoBehaviour
 {
     public PathFollower NPC;
-    public static List<Node> allNodes = new List<Node>();
+    public List<Node> allNodes = new List<Node>();
     public static AStar instance;
 
     Node targetNode;
@@ -164,5 +164,10 @@ public class AStar : MonoBehaviour
 
         path.Reverse();
         return new Path(path);
+    }
+
+    public void AddNodeToList(Node node)
+    {
+        allNodes.Add(node);
     }
 }

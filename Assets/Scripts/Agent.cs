@@ -63,7 +63,7 @@ public class Agent : MonoBehaviour
             // change our rigidbody velocity by force
             rb.velocity += force;
             // if we are falling then drag on x and z movemnt (prevent walking on air)
-            if (rb.velocity.y < -8f)
+            if (rb.velocity.y < -15f)
             {
                 Vector3 newSpeed = rb.velocity * 0.8f;
                 newSpeed.y = rb.velocity.y;
